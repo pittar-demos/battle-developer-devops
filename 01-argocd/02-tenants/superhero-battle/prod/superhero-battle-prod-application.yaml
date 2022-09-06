@@ -13,8 +13,8 @@ spec:
     server: https://kubernetes.default.svc
   project: tenants
   source:
-    path: 02-developers/02-tenants/superhero-battle/overlays/prod
-    repoURL: https://github.com/pittar-demos/rosa-devops.git
+    path: 02-tenants/superhero-battle/overlays/prod
+    repoURL: http://gitea.scm.svc.cluster.local:3000/developer/battle-developer-devops.git
     targetRevision: main
   syncPolicy:
     automated:

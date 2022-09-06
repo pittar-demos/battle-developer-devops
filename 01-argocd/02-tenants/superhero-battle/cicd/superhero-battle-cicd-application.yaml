@@ -14,7 +14,7 @@ spec:
   project: tenants
   source:
     path: 02-tenants/superhero-battle/overlays/cicd
-    repoURL: http://gitea.scm.svc.cluster.local:3000/developer/battle-developer-devops.git
+    repoURL: http://gitea.scm.svc.cluster.local:3000/developer/battle-developer-gitops.git
     targetRevision: main
   syncPolicy:
     automated:

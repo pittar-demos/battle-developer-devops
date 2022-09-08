@@ -110,6 +110,9 @@ spec:
           value: 'false'
         - name: destTLSverify
           value: 'false'
+      workspaces:
+        - name: images-url
+          workspace: pipeline-workspace
     - name: rollout-dev
       runAfter:
         - tag-dev-skopeo
@@ -138,6 +141,9 @@ spec:
           value: 'false'
         - name: destTLSverify
           value: 'false'
+      workspaces:
+        - name: images-url
+          workspace: pipeline-workspace
     - name: rollout-test
       runAfter:
         - tag-test-skopeo
@@ -149,6 +155,3 @@ spec:
           value: oc rollout restart deployment $(params.app-name) -n superhero-battle-test
         - name: VERSION
           value: latest
-      workspaces:
-        - name: images-url
-          workspace: pipeline-workspace

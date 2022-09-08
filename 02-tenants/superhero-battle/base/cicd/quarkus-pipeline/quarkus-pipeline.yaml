@@ -98,7 +98,7 @@ spec:
         - build-image-buildah
       taskRef:
         kind: ClusterTask
-        name: skopeo-copy-1-8-0
+        name: skopeo-copy
       params:
         - name: srcImageURL
           value: >-
@@ -110,6 +110,45 @@ spec:
           value: 'false'
         - name: destTLSverify
           value: 'false'
+    - name: rollout-dev
+      runAfter:
+        - tag-dev-skopeo
+      taskRef:
+        kind: ClusterTask
+        name: openshift-client
+      params:
+        - name: SCRIPT
+          value: oc rollout restart deployment $(params.app-name) -n superhero-battle-dev
+        - name: VERSION
+          value: latest
+    - name: tag-test-skopeo
+      runAfter:
+        - rollout-dev
+      taskRef:
+        kind: ClusterTask
+        name: skopeo-copy
+      params:
+        - name: srcImageURL
+          value: >-
+            docker://$(params.registry-base-url)$(params.app-name)@$(tasks.build-image-buildah.results.IMAGE_DIGEST)
+        - name: destImageURL
+          value: >-
+            docker://$(params.registry-base-url)$(params.app-name):test
+        - name: srcTLSverify
+          value: 'false'
+        - name: destTLSverify
+          value: 'false'
+    - name: rollout-test
+      runAfter:
+        - tag-test-skopeo
+      taskRef:
+        kind: ClusterTask
+        name: openshift-client
+      params:
+        - name: SCRIPT
+          value: oc rollout restart deployment $(params.app-name) -n superhero-battle-test
+        - name: VERSION
+          value: latest
       workspaces:
         - name: images-url
           workspace: pipeline-workspace

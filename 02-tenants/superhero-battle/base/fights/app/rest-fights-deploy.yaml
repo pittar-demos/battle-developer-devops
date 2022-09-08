@@ -18,7 +18,7 @@ metadata:
     system: quarkus-super-heroes
     app.openshift.io/runtime: quarkus
     name: rest-fights
-  name: rest-fights
+  name: battle-rest-fights
 spec:
   replicas: 1
   selector:

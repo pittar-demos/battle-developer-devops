@@ -16,6 +16,7 @@ metadata:
     system: quarkus-super-heroes
     app.openshift.io/runtime: quarkus
     name: rest-villains
+    prometheus-metrics: "true"
   name: rest-villains
 spec:
   ports:

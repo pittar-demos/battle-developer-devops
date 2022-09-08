@@ -16,6 +16,7 @@ metadata:
     system: quarkus-super-heroes
     app.openshift.io/runtime: quarkus
     name: rest-fights
+    prometheus-metrics: "true"
   name: rest-fights
 spec:
   ports:

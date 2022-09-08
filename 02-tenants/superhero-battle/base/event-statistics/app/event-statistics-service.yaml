@@ -17,6 +17,7 @@ metadata:
     application: event-stats
     system: quarkus-super-heroes
     app.openshift.io/runtime: quarkus
+    prometheus-metrics: "true"
   name: event-statistics
 spec:
   ports:

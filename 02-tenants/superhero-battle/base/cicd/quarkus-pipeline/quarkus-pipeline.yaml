@@ -52,10 +52,11 @@ spec:
         - name: GOALS
           value:
             - clean
-            - verify
-            - sonar:sonar
-            - '-Dsonar.host.url=http://sonarqube.cicd-tools.svc.cluster.local:9000'
-            - '-Pquality'
+            - package
+            #- verify
+            #- sonar:sonar
+            #- '-Dsonar.host.url=http://sonarqube.cicd-tools.svc.cluster.local:9000'
+            #- '-Pquality'
             - '-DskipTests'
         - name: PROXY_PROTOCOL
           value: http

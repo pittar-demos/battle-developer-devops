@@ -26,7 +26,7 @@ spec:
         - envFrom:
             - secretRef:
                 name: villains-db-config
-          image: bitnami/postgresql:14
+          image: bitnami/postgresql:14.4.0
           name: villains-db
           ports:
             - containerPort: 5432
